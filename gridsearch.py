@@ -3,6 +3,8 @@ from browniantest import*
 
 simulations=[]
 
+#change
+
 l=0
 
 dmax=40
