@@ -3,7 +3,7 @@ from browniantest import*
 
 simulations=[]
 
-#change23
+
 
 l=0
 
