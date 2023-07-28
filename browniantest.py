@@ -7,7 +7,13 @@ def synthetic(drift, volatility):
     covr=covr[0:10,:]
 
     drift_high=drift
-    drift_low=round(0.95*drift)-1
+
+    if drift < 0:
+        drift_low=round(1.05*drift)-1
+    else:
+        drift_low=round(0.95*drift)-1
+
+
 
     volatility_high=volatility
     volatility_low=round(0.95*volatility)-1
@@ -18,7 +24,7 @@ def synthetic(drift, volatility):
     sigma=np.random.randint(volatility_low,volatility_high, size=(1,10))*np.ones([1,10])
 
 
-    Assets= gbm(mu,sigma,np.zeros([1,10]),np.ones([1,10]),np.corrcoef(covr),100*np.ones([1,10]),300,10**-5)
+    Assets= gbm(mu,sigma,np.zeros([1,10]),np.ones([1,10]),np.corrcoef(covr),100*np.ones([1,10]),100,10**-5)
     delta=[]
 
 
@@ -29,4 +35,4 @@ def synthetic(drift, volatility):
 
     delta=np.array(delta)
 
-    return testing(delta)
+    return delta
